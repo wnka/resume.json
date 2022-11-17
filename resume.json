@@ -1,13 +1,13 @@
 {
     "meta": {
-        "theme": "flat"
+        "theme": "even"
     },
     "basics": {
         "name": "Phil Piwonka",
         "label": "Software Engineer",
         "picture": "",
         "email": "jobs@pdp.dev",
-        "website": "https://pdp.dev",
+        "url": "https://pdp.dev",
         "summary": "I love computers and writing software for them.",
         "location": {
             "city": "Seattle",
@@ -29,40 +29,40 @@
     },
     "work": [
         {
-            "company": "Amazon Web Services",
+            "name": "Amazon Web Services",
             "position": "Principal Software Development Engineer",
-            "website": "https://aws.amazon.com/lambda",
+            "url": "https://aws.amazon.com/lambda",
             "startDate": "2019-10-01",
             "summary": "Member of the AWS Lambda team"
         },
         {
-            "company": "Amazon Web Services",
+            "name": "Amazon Web Services",
             "position": "Senior Software Development Engineer",
-            "website": "https://aws.amazon.com/lambda",
+            "url": "https://aws.amazon.com/lambda",
             "startDate": "2016-04-11",
             "endDate": "2019-09-30",
             "summary": "Member of the AWS Lambda team"
         },
         {
-            "company": "Amazon",
+            "name": "Amazon",
             "position": "Senior Software Development Engineer",
-            "website": "https://www.amazon.com",
+            "url": "https://www.amazon.com",
             "startDate": "2014-10-01",
             "endDate": "2016-04-11",
             "summary": "Member of the Kindle team"
         },
         {
-            "company": "Amazon",
+            "name": "Amazon",
             "position": "Software Development Engineer",
-            "website": "https://www.amazon.com",
+            "url": "https://www.amazon.com",
             "startDate": "2010-09-27",
             "endDate": "2014-10-01",
             "summary": "Member of the Kindle team"
         },
         {
-            "company": "Microsoft",
+            "name": "Microsoft",
             "position": "Software Development Engineer",
-            "website": "https://www.microsoft.com",
+            "url": "https://www.microsoft.com",
             "startDate": "2006-11-06",
             "endDate": "2010-09-17",
             "summary": "Member of the SQL Server team",
@@ -77,9 +77,9 @@
             ]
         },
         {
-            "company": "Lockheed Martin",
+            "name": "Lockheed Martin",
             "position": "Software Engineer",
-            "website": "https://www.lockheedmartin.com",
+            "url": "https://www.lockheedmartin.com",
             "startDate": "2003-06-01",
             "endDate": "2006-10-01",
             "summary": "Worked on near-realtime processing systems",
@@ -92,9 +92,11 @@
             ]
         },
         {
-            "company": "Open Source Developer",
-            "position": "Gawker project",
-            "website": "http://gawker.sourceforge.net",
+            "name": "Open Source Project",
+            "position": "Gawker",
+            "url": "http://gawker.sourceforge.net",
+            "startDate": "2005",
+            "endDate": "2010",
             "summary": "Creator and sole developer of “Gawker”, an open source application that allows users to create parallel time- lapse movies using video cameras connected over a network.",
             "highlights": [
                 "Featured on tuaw.com, lifehacker.com, digg.com, makezine.com, macupdate.com, and versiontracker.com."
