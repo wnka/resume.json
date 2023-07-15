@@ -122,10 +122,10 @@
         },
         {
             "name": "On-demand Container Loading in AWS Lambda",
-            "publisher": "arXiv",
-            "releaseDate": "2023",
-            "url": "https://arxiv.org/abs/2305.13162",
-            "summary": "We describe the storage and caching system we built, optimized for delivering container images on-demand, and our experiences designing, building, and operating it at scale. We focus on challenges around security, efficiency, latency, and cost, and how we addressed these challenges in a system that combines caching, deduplication, convergent encryption, erasure coding, and block-level demand loading."
+            "publisher": "USENIX Association",
+            "releaseDate": "2023-07",
+            "url": "https://www.usenix.org/conference/atc23/presentation/brooker",
+            "summary": "Awarded Best Paper at USENIX ATC'23! - We describe the storage and caching system we built, optimized for delivering container images on-demand, and our experiences designing, building, and operating it at scale. We focus on challenges around security, efficiency, latency, and cost, and how we addressed these challenges in a system that combines caching, deduplication, convergent encryption, erasure coding, and block-level demand loading."
         }
     ],
     "skills": [
