@@ -1,7 +1,8 @@
 # How to build
 
-Uses [resume.json](https://jsonresume.org).
+Uses [resumed](https://github.com/rbardini/resumed), an updated cli for [resume.json](https://jsonresume.org).
+
 
 ``` sh
-resume export index.html
+npm run html
 ```

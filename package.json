@@ -1,5 +1,11 @@
 {
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "html": "resumed --theme jsonresume-theme-even"
+  },
   "dependencies": {
-    "jsonresume-theme-even": "^0.18.1"
+    "jsonresume-theme-even": "^0.18.1",
+    "resumed": "^3.0.0"
   }
 }

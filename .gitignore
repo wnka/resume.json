@@ -1,0 +1,17 @@
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# JavaScript runtimes
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+
+# build artifacts
+resume.html
