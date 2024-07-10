@@ -4,5 +4,5 @@ Uses [resumed](https://github.com/rbardini/resumed), an updated cli for [resume.
 
 
 ``` sh
-npm run html
+pnpm run html
 ```
