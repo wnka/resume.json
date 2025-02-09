@@ -103,6 +103,7 @@
     "education": [
         {
             "institution": "University of Colorado",
+            "url": "https://www.colorado.edu/cs/",
             "area": "Computer Science",
             "studyType": "Five Year Program for Bachelors and Masters Degrees",
             "startDate": "1998-06-01",
@@ -123,6 +124,13 @@
             "releaseDate": "2023-07",
             "url": "https://www.usenix.org/conference/atc23/presentation/brooker",
             "summary": "Awarded Best Paper at USENIX ATC'23! - We describe the storage and caching system we built, optimized for delivering container images on-demand, and our experiences designing, building, and operating it at scale. We focus on challenges around security, efficiency, latency, and cost, and how we addressed these challenges in a system that combines caching, deduplication, convergent encryption, erasure coding, and block-level demand loading."
+        },
+        {
+            "name": "AWS Lambda 10 Year Celebration Livestream",
+            "publisher": "Serverless Land (AWS YouTube channel)",
+            "releaseDate": "2024-11",
+            "url": "https://www.youtube.com/watch?v=AJaJk9I94Kk",
+            "summary": "I represented the AWS Lambda engineering team on this livestream celebrating 10 years of the service, talking about how the service thinks about availability and making sure customer workloads of all shapes and sizes get a great experience. We also discussed how Lambda evolved into building and using Firecracker for virtualization and the challenges of doing a large scale migration."
         }
     ],
     "skills": [
