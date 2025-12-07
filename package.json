@@ -6,8 +6,8 @@
     "pdf": "node index.js"
   },
   "dependencies": {
-    "jsonresume-theme-even": "^0.18.1",
-    "puppeteer": "^22.15.0",
-    "resumed": "^3.0.1"
+    "jsonresume-theme-even": "0.26.1",
+    "puppeteer": "24.32.0",
+    "resumed": "6.1.0"
   }
 }
