@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "html": "resumed --theme jsonresume-theme-even",
+    "html": "resumed --theme jsonresume-theme-even -o index.html",
     "pdf": "node index.js"
   },
   "dependencies": {
