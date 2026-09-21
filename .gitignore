@@ -12,3 +12,6 @@ devenv.local.nix
 node_modules/
 package-lock.json
 pnpm-lock.yaml
+
+# raw notes I jotted down to help brainstorm what to put in
+rawnotes/
