@@ -1,14 +1,11 @@
 {
     "basics": {
         "name": "Phil Piwonka",
-        "label": "Software Engineer",
         "picture": "",
         "email": "jobs@pdp.dev",
         "url": "https://pdp.dev",
-        "summary": "I love computers and writing software for them.",
         "location": {
             "city": "Seattle",
-            "countryCode": "US",
             "region": "Washington"
         },
         "profiles": [

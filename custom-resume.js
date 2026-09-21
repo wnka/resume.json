@@ -318,11 +318,9 @@ export function renderCustomResume(resume) {
     <header class="masthead">
       <div>
         <h1 class="name">${escapeHtml(basics.name || '')}</h1>
-        <p class="label">${escapeHtml(basics.label || '')}</p>
       </div>
       <div class="contact">${contact}</div>
     </header>
-    ${basics.summary ? `<p class="summary">${escapeHtml(basics.summary)}</p>` : ''}
     ${work ? section('Work', work) : ''}
     ${publications ? section('Publications', publications) : ''}
     ${projects ? section('Projects', projects) : ''}
