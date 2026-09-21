@@ -44,7 +44,19 @@ class TimeDuration extends HTMLElement {
 customElements.define('time-duration', TimeDuration)
 
         </script>
-      </head>
+      
+<style>
+  @media screen and (min-width: 48em) {
+    body {
+      grid-template-columns:
+        [full-start] 1fr
+        [main-start side-start] minmax(min-content, 12em)
+        [side-end content-start] minmax(min-content, 48em)
+        [main-end content-end] 1fr
+        [full-end];
+    }
+  }
+</style></head>
       <body>
         
     <header class="masthead">
@@ -79,6 +91,17 @@ customElements.define('time-duration', TimeDuration)
       </ul>
     </header>
    
+      
+      
+      
+    
+        
+      
+      
+        
+      
+      
+         
       <section id="work">
         <h3>Work</h3>
         <div class="stack">
@@ -224,28 +247,45 @@ customElements.define('time-duration', TimeDuration)
               </article>
             
         </div>
-      </section>
-      
-      <section id="education">
-        <h3>Education</h3>
+      </section><section id="publications">
+        <h3>Publications</h3>
         <div class="stack">
           
               <article>
                 <header>
-                  <h4><a href="https://www.colorado.edu/cs/">University of Colorado</a></h4>
+                  <h4><a href="https://www.usenix.org/conference/nsdi20/presentation/agache">Firecracker: Lightweight Virtualization for Serverless Applications</a></h4>
                   <div class="meta">
-                    <div>Five Year Program for Bachelors and Masters Degrees in <strong>Computer Science</strong></div>
-                    <div><time datetime="1998-06-01">Jun 1998</time> – <time datetime="2003-06-01">Jun 2003</time> <time-duration dates="1998-06-01|2003-06-01"></time-duration></div>
+                    <div>Published by <strong>USENIX Association</strong></div>
+                    <time datetime="2020">Jan 2020</time>
                   </div>
                 </header>
-                
+                <p>We describe how specializing for serverless informed the design of Firecracker, and what we learned from seamlessly migrating AWS Lambda customers to Firecracker.</p>
+              </article>
+            
+              <article>
+                <header>
+                  <h4><a href="https://www.usenix.org/conference/atc23/presentation/brooker">On-demand Container Loading in AWS Lambda</a></h4>
+                  <div class="meta">
+                    <div>Published by <strong>USENIX Association</strong></div>
+                    <time datetime="2023-07">Jul 2023</time>
+                  </div>
+                </header>
+                <p>Awarded Best Paper at USENIX ATC'23! - We describe the storage and caching system we built, optimized for delivering container images on-demand, and our experiences designing, building, and operating it at scale. We focus on challenges around security, efficiency, latency, and cost, and how we addressed these challenges in a system that combines caching, deduplication, convergent encryption, erasure coding, and block-level demand loading.</p>
+              </article>
+            
+              <article>
+                <header>
+                  <h4><a href="https://www.youtube.com/watch?v=AJaJk9I94Kk">AWS Lambda 10 Year Celebration Livestream</a></h4>
+                  <div class="meta">
+                    <div>Published by <strong>Serverless Land (AWS YouTube channel)</strong></div>
+                    <time datetime="2024-11">Nov 2024</time>
+                  </div>
+                </header>
+                <p>I represented the AWS Lambda engineering team on this livestream celebrating 10 years of the service, talking about how the service thinks about availability and making sure customer workloads of all shapes and sizes get a great experience. We also discussed how Lambda evolved into building and using Firecracker for virtualization and the challenges of doing a large scale migration.</p>
               </article>
             
         </div>
-      </section>
-    
-        
-      <section id="projects">
+      </section><section id="projects">
         <h3>Projects</h3>
         <div class="stack">
           
@@ -505,49 +545,21 @@ customElements.define('time-duration', TimeDuration)
               </article>
             
         </div>
-      </section>
-      
-        
-      <section id="publications">
-        <h3>Publications</h3>
+      </section><section id="education">
+        <h3>Education</h3>
         <div class="stack">
           
               <article>
                 <header>
-                  <h4><a href="https://www.usenix.org/conference/nsdi20/presentation/agache">Firecracker: Lightweight Virtualization for Serverless Applications</a></h4>
+                  <h4><a href="https://www.colorado.edu/cs/">University of Colorado</a></h4>
                   <div class="meta">
-                    <div>Published by <strong>USENIX Association</strong></div>
-                    <time datetime="2020">Jan 2020</time>
+                    <div>Five Year Program for Bachelors and Masters Degrees in <strong>Computer Science</strong></div>
+                    <div><time datetime="1998-06-01">Jun 1998</time> – <time datetime="2003-06-01">Jun 2003</time> <time-duration dates="1998-06-01|2003-06-01"></time-duration></div>
                   </div>
                 </header>
-                <p>We describe how specializing for serverless informed the design of Firecracker, and what we learned from seamlessly migrating AWS Lambda customers to Firecracker.</p>
-              </article>
-            
-              <article>
-                <header>
-                  <h4><a href="https://www.usenix.org/conference/atc23/presentation/brooker">On-demand Container Loading in AWS Lambda</a></h4>
-                  <div class="meta">
-                    <div>Published by <strong>USENIX Association</strong></div>
-                    <time datetime="2023-07">Jul 2023</time>
-                  </div>
-                </header>
-                <p>Awarded Best Paper at USENIX ATC'23! - We describe the storage and caching system we built, optimized for delivering container images on-demand, and our experiences designing, building, and operating it at scale. We focus on challenges around security, efficiency, latency, and cost, and how we addressed these challenges in a system that combines caching, deduplication, convergent encryption, erasure coding, and block-level demand loading.</p>
-              </article>
-            
-              <article>
-                <header>
-                  <h4><a href="https://www.youtube.com/watch?v=AJaJk9I94Kk">AWS Lambda 10 Year Celebration Livestream</a></h4>
-                  <div class="meta">
-                    <div>Published by <strong>Serverless Land (AWS YouTube channel)</strong></div>
-                    <time datetime="2024-11">Nov 2024</time>
-                  </div>
-                </header>
-                <p>I represented the AWS Lambda engineering team on this livestream celebrating 10 years of the service, talking about how the service thinks about availability and making sure customer workloads of all shapes and sizes get a great experience. We also discussed how Lambda evolved into building and using Firecracker for virtualization and the challenges of doing a large scale migration.</p>
+                
               </article>
             
         </div>
-      </section>
-      
-         
-      </body>
+      </section></body>
     </html>

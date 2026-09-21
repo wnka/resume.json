@@ -2,12 +2,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "html": "resumed --theme jsonresume-theme-even -o index.html",
+    "html": "node html.js",
     "pdf": "node index.js"
   },
   "dependencies": {
     "jsonresume-theme-even": "0.26.1",
     "puppeteer": "24.32.0",
-    "resumed": "6.1.0"
+    "resumed": "7.0.0"
   }
 }
