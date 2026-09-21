@@ -45,7 +45,10 @@
   a:hover { border-bottom-color: var(--link); }
 
   .masthead {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem 2rem;
+    align-items: center;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--rule);
   }
@@ -69,16 +72,23 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem 1.1rem;
-    margin-top: 1rem;
+    justify-content: flex-end;
     color: var(--muted);
     font-size: 0.88rem;
-    text-align: left;
+    text-align: right;
   }
 
   .contact-row {
     display: inline-flex;
     gap: 0.3rem;
     align-items: center;
+  }
+
+  .profile-summary {
+    grid-column: 1 / -1;
+    max-width: 48rem;
+    margin: 0;
+    font-size: 1.08rem;
   }
 
   .contact-icon {
@@ -151,6 +161,18 @@
     font-size: 1.04rem;
   }
 
+  .previous-position {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: baseline;
+    margin-top: 0.4rem;
+  }
+
+  .previous-position-title {
+    font-weight: 600;
+  }
+
   .dates, .meta {
     color: var(--muted);
     font-size: 0.88rem;
@@ -190,9 +212,11 @@
 
   @media (max-width: 700px) {
     body { padding: 2rem 1.25rem 3rem; }
-    .contact { gap: 0.35rem 0.8rem; }
+    .masthead { grid-template-columns: 1fr; }
+    .contact { justify-content: flex-start; gap: 0.35rem 0.8rem; text-align: left; }
     .section { grid-template-columns: 1fr; gap: 0.75rem; }
     .entry-header { display: block; }
+    .previous-position { display: block; }
     .dates { margin-top: 0.25rem; }
   }
 
@@ -200,10 +224,11 @@
     html { font-size: 10.5pt; }
     body { max-width: none; padding: 0; }
     .section { break-inside: auto; }
-    .entry { break-inside: auto; }
+    .entry { break-inside: avoid-page; }
     .masthead { padding-bottom: 1.25rem; }
     .section { padding: 1.1rem 0; }
     .entry + .entry { margin-top: 1.1rem; }
+    .screen-only { display: none; }
     a { border-bottom: 0; }
   }
 </style>
@@ -225,9 +250,10 @@
       <div>
         <h1 class="name">Phil Piwonka</h1>
       </div>
-      <div class="contact"><div class="contact-row" aria-label="Location" title="Location"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Seattle, Washington</span></div><div class="contact-row" aria-label="Email" title="Email"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><a href="mailto:jobs@pdp.dev">jobs@pdp.dev</a></span></div><div class="contact-row" aria-label="Website" title="Website"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.2 2.5 3.3 5.5 3.3 9s-1.1 6.5-3.3 9c-2.2-2.5-3.3-5.5-3.3-9S9.8 5.5 12 3Z"/></svg></span><span><a href="https://pdp.dev">pdp.dev</a></span></div><div class="contact-row" aria-label="GitHub" title="GitHub"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.7-1.3-2.3-.3-4.7-1.2-4.7-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg></span><span><a href="https://github.com/wnka">wnka</a></span></div></div>
+      <div class="contact"><div class="contact-row" aria-label="Location" title="Location"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Seattle, Washington</span></div><div class="contact-row" aria-label="Email" title="Email"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span><a href="mailto:jobs@pdp.dev">jobs@pdp.dev</a></span></div><div class="contact-row" aria-label="GitHub" title="GitHub"><span class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.7-1.3-2.3-.3-4.7-1.2-4.7-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg></span><span><a href="https://github.com/wnka">wnka</a></span></div></div>
+      <p class="profile-summary">Principal Software Engineer with more than a decade building and operating foundational AWS infrastructure across Lambda and Bedrock.</p>
     </header>
-    
+
   <section class="section">
     <h2>Work</h2>
     <div class="section-content">
@@ -237,10 +263,10 @@
         <h3>Principal Software Development Engineer</h3>
         <div class="organization"><a href="https://aws.amazon.com/bedrock">AWS Bedrock</a></div>
       </div>
-      <div class="dates">Sep 2025 – Present</div>
+      <div class="dates">Sep 2025 - Present</div>
     </header>
-    <p class="summary">Selected to join the small, senior engineering team building Project Mantle, a next-generation inference engine for Amazon Bedrock.</p>
-    <ul><li>Focused on the OpenAI Responses API, working with OpenAI to provide compatibility and behavioral parity with the first-party API and implementation.</li><li>Implemented server-side tool calling for the Responses API using connectors to AWS Lambda and Amazon Bedrock AgentCore Gateway, enabling customers to bring existing MCP infrastructure to inference.</li><li>Implemented Web Search for OpenAI frontier models in the Responses API, integrating an existing Amazon search service into AWS with IAM authorization, limit enforcement, fairness algorithms, and monitoring.</li><li>Gave internal talks and helped teams across Amazon understand how to apply AI-driven development.</li><li>Partnered with Builder Tools to improve build times for the Mantle monorepo, supporting rapid AI-driven development while working through the constraints of existing engineering tools.</li></ul>
+<p class="summary">Recruited to Project Mantle during its early expansion, helping evolve the inference engine that became the backbone of Amazon Bedrock.</p>
+    <ul><li>Partner with OpenAI to align Amazon Bedrock&#39;s Responses API behavior with OpenAI&#39;s first-party implementation.</li><li>Built and launched server-side tool execution through AWS Lambda and Amazon Bedrock AgentCore Gateway connectors, allowing customers to use existing MCP-compatible tools during inference.</li><li>Built and launched Web Search for OpenAI frontier models by integrating Amazon search infrastructure with IAM authorization, usage limits, fairness controls, and production monitoring while keeping customer queries within the AWS environment.</li></ul>
   </article>
   <article class="entry">
     <header class="entry-header">
@@ -248,10 +274,14 @@
         <h3>Principal Software Development Engineer</h3>
         <div class="organization"><a href="https://aws.amazon.com/lambda">AWS Lambda</a></div>
       </div>
-      <div class="dates">Apr 2016 – Sep 2025</div>
+      <div class="dates">Sep 2019 - Sep 2025</div>
     </header>
-    <p class="summary">Worked across AWS Lambda infrastructure, focusing on utilization, efficiency, capacity planning, and major platform launches as the service grew rapidly.</p>
-    <ul><li>Designed and implemented a new Lambda Placement service and engine to manage oversubscription, heat management, and efficient workload placement across the fleet.</li><li>Built simulators and utilization models to evaluate placement strategies and determine workload entitlements, informing capacity-planning decisions and system design.</li><li>Evolved Placement through Lambda&#39;s multi-year migration to Firecracker, adapting capacity management and tenancy as the service grew rapidly and its virtualization model changed.</li><li>Extended Placement to handle heterogeneous capacity and workload constraints, including Intel and AMD processors, AWS Graviton, NVMe- and EBS-backed instances, and increasing Lambda memory sizes from 1.5 GB to 10 GB.</li><li>Launched AWS Lambda support for container images, expanding the platform to support container-based workloads and contributing to the award-winning research published in the On-demand Container Loading in AWS Lambda paper.</li><li>Launched Lambda SnapStart to reduce cold-start times and improve startup performance for latency-sensitive applications.</li><li>Served as an Operations bar raiser across Lambda, ECS Fargate, and App Runner; participated in on-call throughout, later joining escalation on-call because of broad system knowledge and operational-event expertise.</li></ul>
+
+    <div class="previous-position">
+      <span class="previous-position-title">Senior Software Development Engineer</span>
+      <span class="dates">Apr 2016 - Sep 2019</span>
+    </div><p class="summary">Led the architecture and evolution of Lambda&#39;s placement and capacity-management systems as the service expanded across new virtualization platforms, processors, storage configurations, and workload sizes.</p>
+    <ul><li>Designed and built Lambda&#39;s placement service and engine to manage oversubscription, thermal constraints, and efficient workload placement across the compute fleet.</li><li>Built simulators and utilization models that informed workload entitlements, fleet planning, and placement strategy; partnered with EC2, finance, and capacity-planning teams to improve warm capacity and fleet flexibility.</li><li>Drove Lambda&#39;s multi-year migration to Firecracker, rewriting capacity-management and tenancy architecture while the service continued to grow; co-authored the NSDI &#39;20 Firecracker paper.</li><li>Expanded capacity systems across Intel, AMD, and AWS Graviton processors; NVMe- and EBS-backed hosts; and Lambda environments ranging from 1.5 GB to 10 GB.</li><li>Launched Lambda support for container images up to 10 GiB; co-authored the resulting USENIX ATC &#39;23 Best Paper describing a system that has processed hundreds of trillions of invocations for more than one million customers.</li><li>Launched Lambda SnapStart to reduce cold starts for latency-sensitive applications.</li><li>Served as a senior operational reviewer across Lambda, ECS Fargate, and App Runner and joined Lambda&#39;s escalation on-call rotation based on broad system and incident-response expertise.</li></ul>
   </article>
   <article class="entry">
     <header class="entry-header">
@@ -259,10 +289,14 @@
         <h3>Senior Software Development Engineer</h3>
         <div class="organization"><a href="https://www.amazon.com">Amazon Kindle</a></div>
       </div>
-      <div class="dates">Sep 2010 – Apr 2016</div>
+      <div class="dates">Nov 2014 - Apr 2016</div>
     </header>
-    <p class="summary">Selected to join the original Kindle Fire team; built cross-platform reader experiences, device UI, and backend services integrating Goodreads with Kindle devices.</p>
-    <ul><li>Helped develop ACX, an HTML5 framework used to deliver Kindle Reader features across Qt-based Mac and PC applications, Android, and iOS.</li><li>Delivered reader experiences including Wikipedia Lookup, passage translation, X-Ray, and End Actions, enabling in-book discovery, contextual information, and post-book recommendations.</li><li>Developed the original Kindle Fire homescreen launcher and carousel, using custom GPU-accelerated rendering for content art and drop shadows while maintaining responsive performance during rapid scrolling and navigation across books, music, and video content.</li><li>Built GRoK (Goodreads on Kindle), the server-side integration that brought Goodreads experiences to first-party Kindle e-readers and Fire tablets by bringing the Goodreads Ruby on Rails stack into Amazon infrastructure and creating services to cache, front, and protect the Goodreads backend from Kindle traffic.</li><li>Prepared for and participated in Christmas traffic gamedays and production on-call, including the GRoK launch as part of the Kindle device registration flow that linked Goodreads and Kindle accounts.</li><li>Helped modernize Goodreads infrastructure by decomposing functionality from its Ruby on Rails monolith into services and using DynamoDB to reduce load on SQL databases.</li><li>Launched Goodreads Deals, a personalized daily email campaign matching discounted ebooks with titles on customers&#39; Want to Read shelves, with batch campaign generation decoupled from online customer traffic.</li></ul>
+
+    <div class="previous-position">
+      <span class="previous-position-title">Software Development Engineer II</span>
+      <span class="dates">Sep 2010 - Nov 2014</span>
+    </div><p class="summary">Built customer-facing software and backend services across the original Kindle Fire, cross-platform reading applications, and Goodreads integration.</p>
+    <ul><li>Co-developed ACX, an HTML5 framework used to ship Wikipedia Lookup, passage translation, X-Ray, and End Actions across desktop, Android, and iOS Kindle applications.</li><li>Built the original Kindle Fire home-screen launcher and carousel, using custom GPU-accelerated rendering to maintain responsive scrolling across books, music, and video.</li><li>Built the backend integration for Goodreads on Kindle, moving its Ruby on Rails stack into Amazon infrastructure and adding caching and protective services for e-reader and Fire tablet traffic.</li><li>Helped decompose Goodreads&#39; Rails monolith into services and launched Goodreads Deals, a personalized ebook campaign whose batch pipeline was isolated from online customer traffic.</li></ul>
   </article>
   <article class="entry">
     <header class="entry-header">
@@ -270,10 +304,9 @@
         <h3>Software Development Engineer</h3>
         <div class="organization"><a href="https://www.microsoft.com">Microsoft</a></div>
       </div>
-      <div class="dates">Nov 2006 – Sep 2010</div>
+      <div class="dates">Nov 2006 - Sep 2010</div>
     </header>
-    <p class="summary">Member of the SQL Server team</p>
-    <ul><li>Developed database providers for the Microsoft Sync Framework, enabling peer-to-peer synchronization capabilities across applications, services, and devices.</li><li>Delivered provider integration in Visual Studio 2008 and 2010 and designed new Merge Replication features for SQL Server 2008.</li><li>Supported enterprise customers by diagnosing urgent issues, gathering feedback, and helping onboard new developers.</li></ul>
+<ul><li>Developed database providers for Microsoft Sync Framework and integrated them into Visual Studio 2008 and 2010, enabling peer-to-peer synchronization across applications, services, and devices.</li><li>Designed Merge Replication features for SQL Server 2008 and supported enterprise customers through urgent production issues.</li></ul>
   </article>
   <article class="entry">
     <header class="entry-header">
@@ -281,35 +314,39 @@
         <h3>Software Engineer</h3>
         <div class="organization"><a href="https://www.lockheedmartin.com">Lockheed Martin</a></div>
       </div>
-      <div class="dates">Jun 2003 – Oct 2006</div>
+      <div class="dates">Jun 2003 - Oct 2006</div>
     </header>
-    <p class="summary">Worked on near-realtime processing systems</p>
-    <ul><li>Designed and tested mission-critical numerical and clustering algorithms in a near-realtime, high-performance UNIX parallel computing environment.</li><li>Scaled algorithms with multithreading and shared-memory programming, and built C++, Matlab, and Perl tools for prototyping and validation.</li><li>Delivered work to multiple customer organizations and led several software development tasks.</li></ul>
+<ul><li>Designed and validated mission-critical numerical and clustering algorithms in a near-real-time, high-performance UNIX parallel-computing environment.</li><li>Improved algorithm performance with multithreading and shared-memory programming using C++, MATLAB, and Perl; led delivery work across multiple customer organizations.</li></ul>
   </article></div>
   </section>
-    
+
   <section class="section">
     <h2>Publications</h2>
     <div class="section-content">
   <article class="entry compact-entry">
     <h3><a href="https://www.usenix.org/conference/nsdi20/presentation/agache">Firecracker: Lightweight Virtualization for Serverless Applications</a></h3>
     <div class="meta">USENIX Association · 2020</div>
-    <p>We describe how specializing for serverless informed the design of Firecracker, and what we learned from seamlessly migrating AWS Lambda customers to Firecracker.</p>
+    <p>Co-author. Describes the design of Firecracker and AWS Lambda&#39;s migration to the new virtualization platform, which supports millions of production workloads and trillions of requests per month.</p>
   </article>
   <article class="entry compact-entry">
     <h3><a href="https://www.usenix.org/conference/atc23/presentation/brooker">On-demand Container Loading in AWS Lambda</a></h3>
     <div class="meta">USENIX Association · Jul 2023</div>
-    <p>Awarded Best Paper at USENIX ATC&#39;23! - We describe the storage and caching system we built, optimized for delivering container images on-demand, and our experiences designing, building, and operating it at scale. We focus on challenges around security, efficiency, latency, and cost, and how we addressed these challenges in a system that combines caching, deduplication, convergent encryption, erasure coding, and block-level demand loading.</p>
-  </article>
+    <p>Co-author and USENIX ATC &#39;23 Best Paper. Describes Lambda&#39;s storage and caching system for container images, which has processed hundreds of trillions of invocations for more than one million customers.</p>
+  </article></div>
+  </section>
+
+  <section class="section screen-only">
+    <h2>Speaking</h2>
+    <div class="section-content">
   <article class="entry compact-entry">
     <h3><a href="https://www.youtube.com/watch?v=AJaJk9I94Kk">AWS Lambda 10 Year Celebration Livestream</a></h3>
     <div class="meta">Serverless Land (AWS YouTube channel) · Nov 2024</div>
-    <p>I represented the AWS Lambda engineering team on this livestream celebrating 10 years of the service, talking about how the service thinks about availability and making sure customer workloads of all shapes and sizes get a great experience. We also discussed how Lambda evolved into building and using Firecracker for virtualization and the challenges of doing a large scale migration.</p>
+    <p>Represented the AWS Lambda engineering team in a discussion of availability, workload diversity, Firecracker, and large-scale platform migration.</p>
   </article></div>
   </section>
-    
-  <section class="section">
-    <h2>Projects</h2>
+
+  <section class="section screen-only">
+    <h2>Selected Work</h2>
     <div class="section-content">
   <article class="entry compact-entry">
     <h3><a href="https://aws.amazon.com/about-aws/whats-new/2026/02/amazon-bedrock-server-side-tool-execution-agentcore-gateway/">Amazon Bedrock AgentCore Gateway tools</a></h3>
@@ -372,14 +409,14 @@
     <p>Open source application for creating parallel time-lapse movies using network-connected video cameras.</p>
   </article></div>
   </section>
-    
+
   <section class="section">
     <h2>Education</h2>
     <div class="section-content">
   <article class="entry compact-entry">
     <h3><a href="https://www.colorado.edu/cs/">University of Colorado</a></h3>
-    <div class="meta">Five Year Program for Bachelors and Masters Degrees · Computer Science with a minor in Applied Mathematics</div>
-    <div class="dates">Jun 1998 – Jun 2003</div>
+    <div class="meta">B.S. and M.S. · Computer Science; minor in Applied Mathematics</div>
+    <div class="dates">Jun 1998 - Jun 2003</div>
   </article></div>
   </section>
   </body>

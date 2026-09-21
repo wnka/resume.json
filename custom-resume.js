@@ -19,7 +19,7 @@ const formatDate = (date) => {
 const formatDateRange = (start, end) => {
   const left = formatDate(start)
   const right = end ? formatDate(end) : 'Present'
-  return left ? `${left} – ${right}` : right
+  return left ? `${left} - ${right}` : right
 }
 
 const link = (url, label) =>
@@ -40,6 +40,13 @@ const list = (items = []) =>
     ? `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
     : ''
 
+const previousPositions = (positions = []) =>
+  positions.map((position) => `
+    <div class="previous-position">
+      <span class="previous-position-title">${escapeHtml(position.position || '')}</span>
+      <span class="dates">${escapeHtml(formatDateRange(position.startDate, position.endDate))}</span>
+    </div>`).join('')
+
 const workEntry = (entry) => `
   <article class="entry">
     <header class="entry-header">
@@ -49,8 +56,7 @@ const workEntry = (entry) => `
       </div>
       <div class="dates">${escapeHtml(formatDateRange(entry.startDate, entry.endDate))}</div>
     </header>
-    ${entry.summary ? `<p class="summary">${escapeHtml(entry.summary)}</p>` : ''}
-    ${list(entry.highlights)}
+${previousPositions(entry.previousPositions)}${entry.summary ? `<p class="summary">${escapeHtml(entry.summary)}</p>\n    ` : ''}${list(entry.highlights)}
   </article>`
 
 const publicationEntry = (entry) => `
@@ -73,8 +79,8 @@ const educationEntry = (entry) => `
     <div class="dates">${escapeHtml(formatDateRange(entry.startDate, entry.endDate))}</div>
   </article>`
 
-const section = (label, content) => `
-  <section class="section">
+const section = (label, content, extraClass = '') => `
+  <section class="section${extraClass ? ` ${extraClass}` : ''}">
     <h2>${escapeHtml(label)}</h2>
     <div class="section-content">${content}</div>
   </section>`
@@ -120,7 +126,10 @@ const styles = `
   a:hover { border-bottom-color: var(--link); }
 
   .masthead {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem 2rem;
+    align-items: center;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--rule);
   }
@@ -144,16 +153,23 @@ const styles = `
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem 1.1rem;
-    margin-top: 1rem;
+    justify-content: flex-end;
     color: var(--muted);
     font-size: 0.88rem;
-    text-align: left;
+    text-align: right;
   }
 
   .contact-row {
     display: inline-flex;
     gap: 0.3rem;
     align-items: center;
+  }
+
+  .profile-summary {
+    grid-column: 1 / -1;
+    max-width: 48rem;
+    margin: 0;
+    font-size: 1.08rem;
   }
 
   .contact-icon {
@@ -226,6 +242,18 @@ const styles = `
     font-size: 1.04rem;
   }
 
+  .previous-position {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: baseline;
+    margin-top: 0.4rem;
+  }
+
+  .previous-position-title {
+    font-weight: 600;
+  }
+
   .dates, .meta {
     color: var(--muted);
     font-size: 0.88rem;
@@ -265,9 +293,11 @@ const styles = `
 
   @media (max-width: 700px) {
     body { padding: 2rem 1.25rem 3rem; }
-    .contact { gap: 0.35rem 0.8rem; }
+    .masthead { grid-template-columns: 1fr; }
+    .contact { justify-content: flex-start; gap: 0.35rem 0.8rem; text-align: left; }
     .section { grid-template-columns: 1fr; gap: 0.75rem; }
     .entry-header { display: block; }
+    .previous-position { display: block; }
     .dates { margin-top: 0.25rem; }
   }
 
@@ -275,10 +305,11 @@ const styles = `
     html { font-size: 10.5pt; }
     body { max-width: none; padding: 0; }
     .section { break-inside: auto; }
-    .entry { break-inside: auto; }
+    .entry { break-inside: avoid-page; }
     .masthead { padding-bottom: 1.25rem; }
     .section { padding: 1.1rem 0; }
     .entry + .entry { margin-top: 1.1rem; }
+    .screen-only { display: none; }
     a { border-bottom: 0; }
   }
 `
@@ -303,6 +334,7 @@ export function renderCustomResume(resume) {
 
   const work = (resume.work || []).map(workEntry).join('')
   const publications = (resume.publications || []).map(publicationEntry).join('')
+  const speaking = (resume.speaking || []).map(publicationEntry).join('')
   const projects = (resume.projects || []).map(projectEntry).join('')
   const education = (resume.education || []).map(educationEntry).join('')
 
@@ -320,11 +352,13 @@ export function renderCustomResume(resume) {
         <h1 class="name">${escapeHtml(basics.name || '')}</h1>
       </div>
       <div class="contact">${contact}</div>
+      ${basics.summary ? `<p class="profile-summary">${escapeHtml(basics.summary)}</p>` : ''}
     </header>
-    ${work ? section('Work', work) : ''}
-    ${publications ? section('Publications', publications) : ''}
-    ${projects ? section('Projects', projects) : ''}
-    ${education ? section('Education', education) : ''}
+${work ? section('Work', work) : ''}
+${publications ? section('Publications', publications) : ''}
+${speaking ? section('Speaking', speaking, 'screen-only') : ''}
+${projects ? section('Selected Work', projects, 'screen-only') : ''}
+${education ? section('Education', education) : ''}
   </body>
 </html>`
 }
