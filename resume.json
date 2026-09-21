@@ -30,7 +30,14 @@
             "position": "Principal Software Development Engineer",
             "url": "https://aws.amazon.com/bedrock",
             "startDate": "2025-09-08",
-            "summary": "Member of the Project Mantle team within AWS Bedrock"
+            "summary": "Selected to join the small, senior engineering team building Project Mantle, a next-generation inference engine for Amazon Bedrock.",
+            "highlights": [
+                "Focused on the OpenAI Responses API, working with OpenAI to provide compatibility and behavioral parity with the first-party API and implementation.",
+                "Implemented server-side tool calling for the Responses API using connectors to AWS Lambda and Amazon Bedrock AgentCore Gateway, enabling customers to bring existing MCP infrastructure to inference.",
+                "Implemented Web Search for OpenAI frontier models in the Responses API, integrating an existing Amazon search service into AWS with IAM authorization, limit enforcement, fairness algorithms, and monitoring.",
+                "Gave internal talks and helped teams across Amazon understand how to apply AI-driven development.",
+                "Partnered with Builder Tools to improve build times for the Mantle monorepo, supporting rapid AI-driven development while working through the constraints of existing engineering tools."
+            ]
         },
         {
             "name": "AWS Lambda",
@@ -38,7 +45,16 @@
             "url": "https://aws.amazon.com/lambda",
             "startDate": "2016-04-11",
             "endDate": "2025-09-07",
-            "summary": "Member of the AWS Lambda team"
+            "summary": "Worked across AWS Lambda infrastructure, focusing on utilization, efficiency, capacity planning, and major platform launches as the service grew rapidly.",
+            "highlights": [
+                "Designed and implemented a new Lambda Placement service and engine to manage oversubscription, heat management, and efficient workload placement across the fleet.",
+                "Built simulators and utilization models to evaluate placement strategies and determine workload entitlements, informing capacity-planning decisions and system design.",
+                "Evolved Placement through Lambda's multi-year migration to Firecracker, adapting capacity management and tenancy as the service grew rapidly and its virtualization model changed.",
+                "Extended Placement to handle heterogeneous capacity and workload constraints, including Intel and AMD processors, AWS Graviton, NVMe- and EBS-backed instances, and increasing Lambda memory sizes from 1.5 GB to 10 GB.",
+                "Launched AWS Lambda support for container images, expanding the platform to support container-based workloads and contributing to the award-winning research published in the On-demand Container Loading in AWS Lambda paper.",
+                "Launched Lambda SnapStart to reduce cold-start times and improve startup performance for latency-sensitive applications.",
+                "Served as an Operations bar raiser across Lambda, ECS Fargate, and App Runner; participated in on-call throughout, later joining escalation on-call because of broad system knowledge and operational-event expertise."
+            ]
         },
         {
             "name": "Amazon Kindle",
@@ -46,7 +62,16 @@
             "url": "https://www.amazon.com",
             "startDate": "2010-09-27",
             "endDate": "2016-04-11",
-            "summary": "Member of the Kindle team"
+            "summary": "Selected to join the original Kindle Fire team; built cross-platform reader experiences, device UI, and backend services integrating Goodreads with Kindle devices.",
+            "highlights": [
+                "Helped develop ACX, an HTML5 framework used to deliver Kindle Reader features across Qt-based Mac and PC applications, Android, and iOS.",
+                "Delivered reader experiences including Wikipedia Lookup, passage translation, X-Ray, and End Actions, enabling in-book discovery, contextual information, and post-book recommendations.",
+                "Developed the original Kindle Fire homescreen launcher and carousel, using custom GPU-accelerated rendering for content art and drop shadows while maintaining responsive performance during rapid scrolling and navigation across books, music, and video content.",
+                "Built GRoK (Goodreads on Kindle), the server-side integration that brought Goodreads experiences to first-party Kindle e-readers and Fire tablets by bringing the Goodreads Ruby on Rails stack into Amazon infrastructure and creating services to cache, front, and protect the Goodreads backend from Kindle traffic.",
+                "Prepared for and participated in Christmas traffic gamedays and production on-call, including the GRoK launch as part of the Kindle device registration flow that linked Goodreads and Kindle accounts.",
+                "Helped modernize Goodreads infrastructure by decomposing functionality from its Ruby on Rails monolith into services and using DynamoDB to reduce load on SQL databases.",
+                "Launched Goodreads Deals, a personalized daily email campaign matching discounted ebooks with titles on customers' Want to Read shelves, with batch campaign generation decoupled from online customer traffic."
+            ]
         },
         {
             "name": "Microsoft",
@@ -56,13 +81,9 @@
             "endDate": "2010-09-17",
             "summary": "Member of the SQL Server team",
             "highlights": [
-                "Focused on providing enterprise customers and developers with robust, scalable, and customizable synchronization solutions as a member of the SQL Server and SQL Azure Data Synchronization Team.",
-                "Primary developer on the Database Providers for the Microsoft Sync Framework, an API that enables developers to add peer-to-peer database synchronization capabilities to applications, services and devices.",
-                "Collaborated with external teams to deliver Database Provider integration in Visual Studio 2010 and 2008, enabling configuration of database caching and synchronization from within Visual Studio projects.",
-                "Designed and implemented new Merge Replication features for the SQL Server 2008 release.",
-                "Provided support for customers by working with the Customer Support Team to help diagnose urgent customer reported issues and drive them to resolution.",
-                "Attended multiple conferences such as TechEd and TechReady to interface with customers, collecting feedback and providing guidance.",
-                "Helped on-board new developers by teaching them current implementation and design details, as well as development processes and expectations."
+                "Developed database providers for the Microsoft Sync Framework, enabling peer-to-peer synchronization capabilities across applications, services, and devices.",
+                "Delivered provider integration in Visual Studio 2008 and 2010 and designed new Merge Replication features for SQL Server 2008.",
+                "Supported enterprise customers by diagnosing urgent issues, gathering feedback, and helping onboard new developers."
             ]
         },
         {
@@ -73,23 +94,87 @@
             "endDate": "2006-10-01",
             "summary": "Worked on near-realtime processing systems",
             "highlights": [
-                "Designed, implemented, documented, and tested mission-critical numerical and clustering algorithms for processing data in a near-realtime high-performance UNIX parallel computing environment.",
-                "Utilized multithreading and shared memory programming models to scale algorithms in order to meet near- realtime processing requirements.",
-                "Wrote analysis tools in C++, Matlab, and Perl to help prototype and validate algorithms.",
-                "Interacted significantly with multiple customer organizations via delivery briefings and working groups.",
-                "Successfully lead several software development tasks."
+                "Designed and tested mission-critical numerical and clustering algorithms in a near-realtime, high-performance UNIX parallel computing environment.",
+                "Scaled algorithms with multithreading and shared-memory programming, and built C++, Matlab, and Perl tools for prototyping and validation.",
+                "Delivered work to multiple customer organizations and led several software development tasks."
             ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "Amazon Bedrock AgentCore Gateway tools",
+            "description": "AWS announcement for server-side tool execution through AgentCore Gateway integration with the Responses API.",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/02/amazon-bedrock-server-side-tool-execution-agentcore-gateway/"
         },
         {
-            "name": "Open Source Project",
-            "position": "Gawker",
-            "url": "http://gawker.sourceforge.net",
-            "startDate": "2005",
-            "endDate": "2010",
-            "summary": "Creator and sole developer of “Gawker”, an open source application that allows users to create parallel time- lapse movies using video cameras connected over a network.",
-            "highlights": [
-                "Featured on tuaw.com, lifehacker.com, digg.com, makezine.com, macupdate.com, and versiontracker.com."
-            ]
+            "name": "Amazon Bedrock server-side tool use",
+            "description": "AWS documentation for Responses API connectors using Lambda and MCP-compatible tools.",
+            "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/tool-use-server-side.html"
+        },
+        {
+            "name": "Amazon Bedrock Web Search",
+            "description": "AWS announcement for built-in Web Search for OpenAI models in Amazon Bedrock.",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-bedrock-web/"
+        },
+        {
+            "name": "Amazon Bedrock server-side tools",
+            "description": "AWS announcement for server-side custom tools through the Responses API.",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2026/01/amazon-bedrock-server-side-custom-tools-responses-api"
+        },
+        {
+            "name": "Amazon Bedrock Responses API",
+            "description": "AWS announcement for OpenAI Responses API support on Amazon Bedrock endpoints.",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-bedrock-responses-api-from-openai/"
+        },
+        {
+            "name": "Project Mantle",
+            "description": "Amazon’s public account of Mantle and the small engineering team that rebuilt the Bedrock inference engine.",
+            "url": "https://www.aboutamazon.com/news/innovation-at-amazon/andy-jassy-amazon-reinvention"
+        },
+        {
+            "name": "AWS Lambda on Graviton",
+            "description": "AWS reference for running Lambda functions on Arm-based Graviton2 processors.",
+            "url": "https://aws.amazon.com/blogs/compute/migrating-aws-lambda-functions-to-arm-based-aws-graviton2-processors/"
+        },
+        {
+            "name": "AWS Lambda SnapStart",
+            "description": "AWS announcement for Lambda SnapStart and its cold-start performance improvements.",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2022/11/aws-lambda-snapstart-java-functions"
+        },
+        {
+            "name": "AWS Lambda container images",
+            "description": "AWS announcement for Lambda support for container images as a packaging format.",
+            "url": "https://aws.amazon.com/about-aws/whats-new/2020/12/aws-lambda-now-supports-container-images-as-a-packaging-format/"
+        },
+        {
+            "name": "Firecracker",
+            "description": "Official Firecracker project reference for lightweight virtualization used by AWS Lambda and other services.",
+            "url": "https://firecracker-microvm.github.io/"
+        },
+        {
+            "name": "Goodreads Deals",
+            "description": "Public announcement describing the personalized Goodreads Deals ebook campaign.",
+            "url": "https://www.goodreads.com/blog/show/649-goodreads-deals-a-new-way-to-promote-your-ebooks-to-millions-of-goodrea"
+        },
+        {
+            "name": "Kindle X-Ray",
+            "description": "Public announcement describing X-Ray for exploring characters, places, ideas, and topics across a book.",
+            "url": "https://press.aboutamazon.com/2012/3/amazon-kindle-touch-3g-now-for-sale-to-customers-in-over-175-countries"
+        },
+        {
+            "name": "Goodreads on Kindle",
+            "description": "Public announcement describing the original Goodreads integration on Kindle Paperwhite.",
+            "url": "https://press.aboutamazon.com/2013/11/goodreads-and-kindle-freetime-now-available-on-the-new-kindle-paperwhite"
+        },
+        {
+            "name": "Kindle Fire launch",
+            "description": "Public announcement describing the original Kindle Fire product and its launch.",
+            "url": "https://press.aboutamazon.com/2011/11/kindle-fire-ships-today-one-day-early"
+        },
+        {
+            "name": "Gawker",
+            "description": "Open source application for creating parallel time-lapse movies using network-connected video cameras.",
+            "url": "http://gawker.sourceforge.net"
         }
     ],
     "education": [
@@ -123,50 +208,6 @@
             "releaseDate": "2024-11",
             "url": "https://www.youtube.com/watch?v=AJaJk9I94Kk",
             "summary": "I represented the AWS Lambda engineering team on this livestream celebrating 10 years of the service, talking about how the service thinks about availability and making sure customer workloads of all shapes and sizes get a great experience. We also discussed how Lambda evolved into building and using Firecracker for virtualization and the challenges of doing a large scale migration."
-        }
-    ],
-    "skills": [
-        {
-            "name": "Programming Languages",
-            "level": "Master",
-            "keywords": [
-                "Java",
-                "C/C++",
-                "Microsoft .NET",
-                "Objective-C",
-                "Python",
-                "Go",
-                "Rust"
-            ]
-        },
-        {
-            "name": "Server Technologies",
-            "level": "Master",
-            "keywords": [
-                "SQL",
-                "DynamoDB",
-                "SQS",
-                "Memcached",
-                "EC2"
-            ]
-        },
-        {
-            "name": "Client Platforms",
-            "level": "Master",
-            "keywords": [
-                "Android",
-                "iOS",
-                "Mac",
-                "Qt"
-            ]
-        }
-    ],
-    "interests": [
-        {
-            "name": "Pinball / Arcade games"
-        },
-        {
-            "name": "Music"
         }
     ]
 }
