@@ -16,11 +16,6 @@
                 "network": "GitHub",
                 "username": "wnka",
                 "url": "https://github.com/wnka"
-            },
-            {
-                "network": "Mastodon",
-                "username": "@pdp@hachyderm.io",
-                "url": "https://hachyderm.io/@pdp"
             }
         ]
     },

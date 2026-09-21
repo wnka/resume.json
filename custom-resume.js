@@ -25,6 +25,16 @@ const formatDateRange = (start, end) => {
 const link = (url, label) =>
   url ? `<a href="${escapeHtml(url)}">${escapeHtml(label)}</a>` : escapeHtml(label)
 
+const icon = (name) => {
+  const paths = {
+    location: '<path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>',
+    email: '<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m4 7 8 6 8-6"/>',
+    website: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.2 2.5 3.3 5.5 3.3 9s-1.1 6.5-3.3 9c-2.2-2.5-3.3-5.5-3.3-9S9.8 5.5 12 3Z"/>',
+    github: '<path fill="currentColor" stroke="none" d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.7-1.3-2.3-.3-4.7-1.2-4.7-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/>'
+  }
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${paths[name]}</svg>`
+}
+
 const list = (items = []) =>
   items.length
     ? `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
@@ -75,7 +85,7 @@ const styles = `
     --muted: #77716a;
     --rule: #d8d1c8;
     --link: #245b73;
-    --paper: #fffdf9;
+    --paper: #ffffff;
   }
 
   @page {
@@ -143,17 +153,26 @@ const styles = `
   .contact-row {
     display: inline-flex;
     gap: 0.3rem;
-    align-items: baseline;
+    align-items: center;
   }
 
-  .contact-label {
+  .contact-icon {
+    display: inline-flex;
+    line-height: 0;
     color: var(--muted);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
   }
 
-  .contact-label::after { content: ":"; }
+  .contact-icon svg {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+    vertical-align: -0.12em;
+  }
 
   .summary {
     max-width: 48rem;
@@ -271,14 +290,14 @@ export function renderCustomResume(resume) {
         .filter(Boolean)
         .join(', ')
     : ''
-  const contactRow = (label, value) =>
-    `<div class="contact-row"><span class="contact-label">${escapeHtml(label)}</span><span>${value}</span></div>`
+  const contactRow = (iconName, label, value) =>
+    `<div class="contact-row" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}"><span class="contact-icon">${icon(iconName)}</span><span>${value}</span></div>`
   const contact = [
-    location ? contactRow('Location', escapeHtml(location)) : '',
-    basics.email ? contactRow('Email', link(`mailto:${basics.email}`, basics.email)) : '',
-    basics.url ? contactRow('Website', link(basics.url, basics.url.replace(/^https?:\/\//, ''))) : '',
+    location ? contactRow('location', 'Location', escapeHtml(location)) : '',
+    basics.email ? contactRow('email', 'Email', link(`mailto:${basics.email}`, basics.email)) : '',
+    basics.url ? contactRow('website', 'Website', link(basics.url, basics.url.replace(/^https?:\/\//, ''))) : '',
     ...(basics.profiles || []).map((profile) =>
-      contactRow(profile.network || 'Profile', link(profile.url, profile.username || profile.url))
+      contactRow('github', profile.network || 'Profile', link(profile.url, profile.username || profile.url))
     )
   ].filter(Boolean).join('')
 
